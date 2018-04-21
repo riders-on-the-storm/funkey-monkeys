@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameScript : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class GameScript : MonoBehaviour
 	public List<GameObject> holes;
 	public int Player1Score = 0;
 	public int Player2Score = 0;
+	private Text Score1, Score2;
 	
 	// Use this for initialization
 	void Start ()
@@ -27,6 +29,8 @@ public class GameScript : MonoBehaviour
 		{
 			Instantiate(hole);	
 		}
+		 Score1 = GameObject.Find ("Canvas/Score1").GetComponent<UnityEngine.UI.Text>();
+		 Score2 = GameObject.Find ("Canvas/Score2").GetComponent<UnityEngine.UI.Text>();
 	}
 
 	public void AddScore(int PlayerId, int score)
@@ -34,10 +38,12 @@ public class GameScript : MonoBehaviour
 		if (PlayerId == 1)
 		{
 			Player1Score += score;
+			Score1.text = Player1Score.ToString();
 		}
 		else
 		{
 			Player2Score += score;
+			Score2.text = Player2Score.ToString();
 		}
 	}
 	
