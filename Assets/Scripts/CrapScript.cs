@@ -16,7 +16,7 @@ public class CrapScript : MonoBehaviour
 
 	private void FixedUpdate()
 	{
-	
+		
 	}
 
 	// Update is called once per frame
