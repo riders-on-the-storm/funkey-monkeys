@@ -13,11 +13,13 @@ public class MonkeyKeyController : MonoBehaviour {
 	private float DeltaTimeMax = 1;
 	private bool Accumulation = false;
 	public GameObject crap;
+	public int Health = 6;
+	
 	// Use this for initialization
 	void Start () {
 		animator = GetComponent<Animator> ();
 	}
-	
+
 	// Update is called once per frame
 	void FixedUpdate ()
 	{
@@ -56,6 +58,14 @@ public class MonkeyKeyController : MonoBehaviour {
 			Accumulation = false;
 			DeltaTime = 0;
 			TimeStop = Time.time;
+		}
+	}
+
+	public void OnTriggerEnter2D(Collider2D other)
+	{
+		if (other.gameObject.name == "Crap")
+		{
+			this.Health--;
 		}
 	}
 
