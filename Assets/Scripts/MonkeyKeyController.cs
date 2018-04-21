@@ -5,8 +5,10 @@ using UnityEngine;
 public class MonkeyKeyController : MonoBehaviour {
 	private Animator animator;
 	private float Force;
-	private float MaxForce = 350;
+	private float MaxForce = 400;
 	private float TimeStart;
+	private float TimeStop;
+	private float TimePause = 1;
 	private float DeltaTime = 0;
 	private float DeltaTimeMax = 1;
 	private bool Accumulation = false;
@@ -21,7 +23,7 @@ public class MonkeyKeyController : MonoBehaviour {
 	{
 		if (Input.GetMouseButton(0))
 		{
-			if (Input.GetMouseButtonDown(0))
+			if (!Accumulation && (Time.time - TimeStop > TimePause))
 			{
 				TimeStart = Time.time;
 				Accumulation = true;
@@ -53,6 +55,7 @@ public class MonkeyKeyController : MonoBehaviour {
 			
 			Accumulation = false;
 			DeltaTime = 0;
+			TimeStop = Time.time;
 		}
 	}
 
