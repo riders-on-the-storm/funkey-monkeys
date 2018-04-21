@@ -53,11 +53,11 @@ public class MonkeyKeyController : MonoBehaviour {
 			Vector3 crapPos = this.transform.position;
 			if (this.transform.position.x > pz.x)
 			{
-				crapPos.x -= 0.1F;
+				crapPos.x -= 0.2F;
 			}
 			else
 			{
-				crapPos.x += 0.1F;
+				crapPos.x += 0.2F;
 			}
 			GameObject go = Instantiate(crap) as GameObject;
 			go.transform.position = crapPos;
@@ -81,7 +81,7 @@ public class MonkeyKeyController : MonoBehaviour {
 
 	public void OnTriggerEnter2D(Collider2D other)
 	{
-		if (other.gameObject.name == "Crap")
+		if (other.gameObject.name == "Crap(Clone)")
 		{
 			this.Health--;
 		}
