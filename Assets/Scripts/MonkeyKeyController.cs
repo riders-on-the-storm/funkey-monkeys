@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class MonkeyKeyController : MonoBehaviour {
 	private Animator animator;
+
+	public GameObject crap;
 	// Use this for initialization
 	void Start () {
 		animator = GetComponent<Animator> ();
@@ -15,6 +17,9 @@ public class MonkeyKeyController : MonoBehaviour {
 		if (Input.GetKeyDown("space"))
 		{
 			animator.SetTrigger("KeyClick");
+			GameObject go = Instantiate(crap) as GameObject;
+			Vector2 position = this.transform.position;
+			go.transform.position = position;
 		}			
 	}
 }
