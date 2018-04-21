@@ -5,7 +5,7 @@ using UnityEngine;
 public class CrapScript : MonoBehaviour
 {
 
-	public Vector3  StartForce = new Vector3(5, 2);
+	public Vector3  StartForce;
 	private Rigidbody2D rb;
 	// Use this for initialization
 	void Start ()

@@ -4,7 +4,14 @@ using UnityEngine;
 
 public class MonkeyKeyController : MonoBehaviour {
 	private Animator animator;
-
+	private float Force;
+	private float MaxForce = 400;
+	private float TimeStart;
+	private float TimeStop;
+	private float TimePause = 1;
+	private float DeltaTime = 0;
+	private float DeltaTimeMax = 1;
+	private bool Accumulation = false;
 	public GameObject crap;
 	// Use this for initialization
 	void Start () {
@@ -12,14 +19,53 @@ public class MonkeyKeyController : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update ()
+	void FixedUpdate ()
 	{
-		if (Input.GetKeyDown("space"))
+		if (Input.GetMouseButton(0))
 		{
+			if (!Accumulation && (Time.time - TimeStop > TimePause))
+			{
+				TimeStart = Time.time;
+				Accumulation = true;
+			}
+
+			if (Accumulation)
+			{
+				DeltaTime = Time.time - TimeStart;
+				if (DeltaTime > DeltaTimeMax)
+				{
+					DeltaTime = DeltaTimeMax;
+				}
+			}
+		}
+
+		if ((Accumulation && !Input.GetMouseButton(0)) || (DeltaTime == DeltaTimeMax))
+		{
+			Force = (DeltaTime / DeltaTimeMax) * MaxForce;
+			Vector3 pz = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+			pz.z = 0;
+			Vector2 forceVector = (pz - this.transform.position);
+			forceVector = pz / pz.magnitude;
+			forceVector = forceVector * Force;
+			
 			animator.SetTrigger("KeyClick");
 			GameObject go = Instantiate(crap) as GameObject;
-			Vector2 position = this.transform.position;
-			go.transform.position = position;
-		}			
+			go.transform.position = this.transform.position;
+			go.GetComponent<CrapScript>().StartForce = forceVector;
+			
+			Accumulation = false;
+			DeltaTime = 0;
+			TimeStop = Time.time;
+		}
+	}
+
+	void Update()
+	{
+		
+	}
+
+	void OnMouseDown()
+	{
+		Debug.Log("SomeLevel");
 	}
 }
