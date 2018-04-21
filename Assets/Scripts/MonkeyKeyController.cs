@@ -44,20 +44,38 @@ public class MonkeyKeyController : MonoBehaviour {
 		if ((Accumulation && !Input.GetMouseButton(0)) || (DeltaTime == DeltaTimeMax))
 		{
 			Force = (DeltaTime / DeltaTimeMax) * MaxForce;
-			Vector3 pz = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+			Vector3 pz = Camera.main.ScreenPointToRay(Input.mousePosition).GetPoint(0);
 			pz.z = 0;
 			Vector2 forceVector = (pz - this.transform.position);
-			forceVector = pz / pz.magnitude;
 			forceVector = forceVector * Force;
 			
 			animator.SetTrigger("KeyClick");
+			Vector3 crapPos = this.transform.position;
+			if (this.transform.position.x > pz.x)
+			{
+				crapPos.x -= 0.1F;
+			}
+			else
+			{
+				crapPos.x += 0.1F;
+			}
 			GameObject go = Instantiate(crap) as GameObject;
-			go.transform.position = this.transform.position;
+			go.transform.position = crapPos;
 			go.GetComponent<CrapScript>().StartForce = forceVector;
 			
 			Accumulation = false;
 			DeltaTime = 0;
 			TimeStop = Time.time;
+		}
+
+		if (Input.GetKey("a"))
+		{
+			GetComponent< Rigidbody2D > ().velocity = new Vector3(-1, 0, 0);
+		}
+
+		if (Input.GetKey("d"))
+		{
+			GetComponent< Rigidbody2D > ().velocity = new Vector3(1, 0, 0);
 		}
 	}
 
@@ -72,10 +90,5 @@ public class MonkeyKeyController : MonoBehaviour {
 	void Update()
 	{
 		
-	}
-
-	void OnMouseDown()
-	{
-		Debug.Log("SomeLevel");
 	}
 }
