@@ -15,7 +15,7 @@ public class HoleScript : MonoBehaviour
 	public void OnTriggerEnter2D(Collider2D other)
 	{
 		Game.AddScore(PlayerId, this.Score);
-		if (other.gameObject.name == "Crap")
+		if (other.gameObject.name == "Crap(Clone)")
 		{
 			Destroy(other.gameObject);
 		}		
