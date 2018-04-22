@@ -8,6 +8,7 @@ TagManager:
   - Score2
   - Score1
   - Ground
+  - Wall
   layers:
   - Default
   - TransparentFX

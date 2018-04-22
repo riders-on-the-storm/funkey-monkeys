@@ -18,13 +18,17 @@ public class GameScript : MonoBehaviour
 	public Texture2D cursor;
 	private CursorMode _CursorMode = CursorMode.Auto;
 	public Vector2 HotSpot = Vector2.zero;
+	public double shouldWidth;
 
 	private Slider Slider1, Slider2;
 	// Use this for initialization
 	void Start ()
 	{
 		Cursor.SetCursor(cursor, HotSpot, _CursorMode);
-		Instantiate(Camera);
+		Camera cam = Instantiate(Camera) as Camera;
+		cam.orthographicSize = (float) (shouldWidth * ((float)Screen.height / (float)Screen.width) * 0.5f);
+		
+		
 		Instantiate(Player1);
 		if (Player2 != null)
 		{
