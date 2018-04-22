@@ -28,6 +28,7 @@ public class GameScript : MonoBehaviour
 		Camera cam = Instantiate(Camera) as Camera;
 		cam.orthographicSize = (float) (shouldWidth * ((float)Screen.height / (float)Screen.width) * 0.5f);
 		
+		
 		Instantiate(Player1);
 		if (Player2 != null)
 		{
