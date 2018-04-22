@@ -66,7 +66,8 @@ public class PlayerBotController : MonoBehaviour {
 			{
 //			Vector3 pz = Camera.main.ScreenPointToRay(Input.mousePosition).GetPoint(0);
 //			pz.z = 0;
-				Vector2 forceVector = new Vector2(-Math.Abs(Random.value), Math.Abs(Random.value));
+				float value = Random.value;
+				Vector2 forceVector = new Vector2(-Math.Abs(value * 6), Math.Abs(value));
 				forceVector = forceVector.normalized;
 				forceVector = forceVector * Force;
 				Debug.Log(forceVector);
