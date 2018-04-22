@@ -63,6 +63,7 @@ public class MonkeyKeyController : MonoBehaviour {
 			
 			animator.SetTrigger("KeyClick");
 			Vector3 crapPos = this.transform.position;
+			crapPos.y += 0.1F;
 			if (this.transform.position.x > pz.x)
 			{
 				crapPos.x -= 0.2F;
