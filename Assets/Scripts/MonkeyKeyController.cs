@@ -32,6 +32,16 @@ public class MonkeyKeyController : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate ()
 	{
+		Vector3 pz = Camera.main.ScreenPointToRay(Input.mousePosition).GetPoint(0);
+		pz.z = 0;
+		if (this.transform.position.x > pz.x)
+		{
+			animator.SetTrigger("ToLeft");
+		}
+		else
+		{
+			animator.SetTrigger("ToRight");
+		}
 		if (Input.GetButton("Fire1"))
 		{
 			if (!Accumulation && (Time.time - TimeStop > TimePause))
@@ -55,8 +65,7 @@ public class MonkeyKeyController : MonoBehaviour {
 
 		if ((Accumulation && !Input.GetButton("Fire1")) || (DeltaTime == DeltaTimeMax))
 		{
-			Vector3 pz = Camera.main.ScreenPointToRay(Input.mousePosition).GetPoint(0);
-			pz.z = 0;
+			
 			Vector2 forceVector = (pz - this.transform.position);
 			forceVector = forceVector.normalized;
 			forceVector = forceVector * Force;
@@ -80,6 +89,8 @@ public class MonkeyKeyController : MonoBehaviour {
 			DeltaTime = 0;
 			TimeStop = Time.time;
 		}
+		
+		
 	}
 	
 	public void OnTriggerEnter2D(Collider2D other)
@@ -91,7 +102,6 @@ public class MonkeyKeyController : MonoBehaviour {
 			this.Health--;
 			if (this.Health < 1)
 			{
-				animator.SetTrigger("Death");
 				Destroy(GetComponent< Rigidbody2D > ());
 			}
 		}
