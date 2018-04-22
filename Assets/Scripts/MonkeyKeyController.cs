@@ -5,7 +5,7 @@ using UnityEngine;
 public class MonkeyKeyController : MonoBehaviour {
 	private Animator animator;
 	private float Force;
-	private float MaxForce = 200;
+	private float MaxForce = 400;
 	private float TimeStart;
 	private float TimeStop;
 	private float TimePause = 1;
