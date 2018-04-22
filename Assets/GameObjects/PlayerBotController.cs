@@ -39,7 +39,7 @@ public class PlayerBotController : MonoBehaviour {
 	{
 		if (Health > 0)
 		{
-			bool isFire = Random.value > 0.1 || Force < MaxForce / 2f;
+			bool isFire = Random.value > 0.1 || Force < MaxForce * 0.8f;
 			Force = (DeltaTime / DeltaTimeMax) * MaxForce;
 			if (isFire)
 			{
@@ -67,7 +67,7 @@ public class PlayerBotController : MonoBehaviour {
 //			Vector3 pz = Camera.main.ScreenPointToRay(Input.mousePosition).GetPoint(0);
 //			pz.z = 0;
 				float value = Random.value;
-				Vector2 forceVector = new Vector2(-Math.Abs(value * 6), Math.Abs(value));
+				Vector2 forceVector = new Vector2(-transform.position.x * (1/value), 10);
 				forceVector = forceVector.normalized;
 				forceVector = forceVector * Force;
 				Debug.Log(forceVector);
@@ -106,7 +106,7 @@ public class PlayerBotController : MonoBehaviour {
 		GameObject nearesCrap = null;
 		foreach (GameObject crap in craps)
 		{
-			if ((crap.transform.position - this.transform.position).magnitude < distance && crap.GetComponent<Rigidbody2D>().velocity.x > 0.5)
+			if ((crap.transform.position - this.transform.position).magnitude < distance && crap.GetComponent<Rigidbody2D>().velocity.x >= 0)
 			{
 				distance = (crap.transform.position - this.transform.position).magnitude;
 				nearesCrap = crap;

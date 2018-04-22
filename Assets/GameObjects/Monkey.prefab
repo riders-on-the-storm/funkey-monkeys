@@ -177,7 +177,7 @@ MonoBehaviour:
   Health: 6
   PlayerId: 1
   speed: 3
-  jumpPower: 4
+  jumpPower: 3
   isJumping: 0
 --- !u!212 &212022502902166964
 SpriteRenderer:
