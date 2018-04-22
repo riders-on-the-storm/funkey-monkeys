@@ -58,6 +58,7 @@ public class MonkeyKeyController : MonoBehaviour {
 			Vector3 pz = Camera.main.ScreenPointToRay(Input.mousePosition).GetPoint(0);
 			pz.z = 0;
 			Vector2 forceVector = (pz - this.transform.position);
+			forceVector = forceVector.normalized;
 			forceVector = forceVector * Force;
 			
 			animator.SetTrigger("KeyClick");
