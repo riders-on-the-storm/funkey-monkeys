@@ -86,6 +86,7 @@ public class MonkeyKeyController : MonoBehaviour {
 	{
 		if (other.gameObject.name == "Crap(Clone)")
 		{
+			Destroy(other.gameObject);
 			animator.SetTrigger("TouchCrap");
 			this.Health--;
 			if (this.Health < 1)
