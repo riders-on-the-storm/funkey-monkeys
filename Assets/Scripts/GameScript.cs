@@ -15,11 +15,15 @@ public class GameScript : MonoBehaviour
 	public int Player1Score = 0;
 	public int Player2Score = 0;
 	private Text Score1, Score2;
+	public Texture2D cursor;
+	private CursorMode _CursorMode = CursorMode.Auto;
+	public Vector2 HotSpot = Vector2.zero;
 
 	private Slider Slider1, Slider2;
 	// Use this for initialization
 	void Start ()
 	{
+		Cursor.SetCursor(cursor, HotSpot, _CursorMode);
 		Instantiate(Camera);
 		Instantiate(Player1);
 		if (Player2 != null)
