@@ -60,5 +60,5 @@ MonoBehaviour:
   - {fileID: 1843085723064382, guid: 266084bac90992242ae56deb34860b53, type: 2}
   Player1Score: 0
   Player2Score: 0
-  cursor: {fileID: 2800000, guid: 1ba0382d1c23f134a8ec7b43c474f916, type: 3}
+  cursor: {fileID: 2800000, guid: fdf2e462f6866cc4abd4662067ddb676, type: 3}
   HotSpot: {x: 0, y: 0}
