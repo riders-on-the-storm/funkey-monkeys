@@ -19,6 +19,7 @@ public class PlayerBotController : MonoBehaviour {
 	public GameObject crap;
 	public int Health = 6;
 	public int PlayerId;
+	private Vector2 moveTo;
 
 	private Rigidbody2D mybody;
 	public float speed;
@@ -30,6 +31,7 @@ public class PlayerBotController : MonoBehaviour {
 		animator = GetComponent<Animator> ();
 		Game  = GameObject.Find("Game").GetComponent<GameScript>();
 		mybody = GetComponent<Rigidbody2D>();
+		moveTo = this.transform.position;
 	}
 
 	// Update is called once per frame
@@ -89,6 +91,36 @@ public class PlayerBotController : MonoBehaviour {
 				TimeStop = Time.time;
 			}
 		}
+		Debug.Log(moveTo);
+		if (Math.Abs(transform.position.x - moveTo.x) > 0.5)
+		{
+			Vector2 move = new Vector2(moveTo.x - transform.position.x, 0);
+			move = move.normalized;
+			move.y = -0.5f;
+			mybody.velocity = move* speed;
+		}
+		
+		GameObject[] craps = GameObject.FindGameObjectsWithTag("Crap");
+		float distance = 10000;
+		GameObject nearesCrap = null;
+		foreach (GameObject crap in craps)
+		{
+			if ((crap.transform.position - this.transform.position).magnitude < distance && crap.GetComponent<Rigidbody2D>().velocity.x > 0.5)
+			{
+				distance = (crap.transform.position - this.transform.position).magnitude;
+				nearesCrap = crap;
+			}
+		}
+		if (nearesCrap != null && distance < 3)
+		{
+			Vector2 move = nearesCrap.transform.position - this.transform.position;
+			move = move.normalized;
+			moveTo =  new Vector2((-move.x) * speed, 0);
+		}
+		else
+		{
+			moveTo =  new Vector2(1, 0);
+		}
 	}
 	
 	public void OnTriggerEnter2D(Collider2D other)
@@ -109,17 +141,5 @@ public class PlayerBotController : MonoBehaviour {
 		{
 			isJumping = false;
 		}
-	}
-
-	void Update()
-	{
-//		float move = Input.GetAxis("Horizontal");
-//		mybody.velocity = new Vector2(move * speed, mybody.velocity.y);
-//
-//		if (Input.GetKey("w") && !isJumping)
-//		{
-//			mybody.velocity = new Vector2(mybody.velocity.x, jumpPower);
-//			isJumping = true;
-//		}
 	}
 }

@@ -54,7 +54,7 @@ MonoBehaviour:
   Camera: {fileID: 20968581515789540, guid: b0955ade1765fab40904add9c1e94efe, type: 2}
   Player1: {fileID: 1369408713554850, guid: de446a5eaeb504a4ab63f45177ba03c5, type: 2}
   Player2: {fileID: 1884244472439080, guid: 0d70c36153505dc44a175faa19813cc9, type: 2}
-  MainGrid: {fileID: 2569400265448683596, guid: f7c7a6a4645d16e4c9c45ce35f153640,
+  MainGrid: {fileID: 2569400268551781700, guid: f7c7a6a4645d16e4c9c45ce35f153640,
     type: 2}
   holes:
   - {fileID: 1913192695580064, guid: a3cc0096f5e23364ab416e338ad2db9a, type: 2}

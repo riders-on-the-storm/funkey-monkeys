@@ -61,7 +61,6 @@ public class GameScript : MonoBehaviour
 
 	public void ChangeForce(int PlayerId, float Force)
 	{
-		Debug.Log(Force);
 		if (PlayerId == 1)
 		{
 			Slider1.value = Force;
