@@ -12,12 +12,15 @@ public class MonkeyKeyController : MonoBehaviour {
 	private float DeltaTime = 0;
 	private float DeltaTimeMax = 1;
 	private bool Accumulation = false;
+	private GameScript Game;
 	public GameObject crap;
 	public int Health = 6;
+	public int PlayerId;
 	
 	// Use this for initialization
 	void Start () {
 		animator = GetComponent<Animator> ();
+		Game  = GameObject.Find("Game").GetComponent<GameScript>();
 	}
 
 	// Update is called once per frame
@@ -40,10 +43,11 @@ public class MonkeyKeyController : MonoBehaviour {
 				}
 			}
 		}
-
+		Force = (DeltaTime / DeltaTimeMax) * MaxForce;
+		float NormalizedForce = Force * 1f / MaxForce;
+		Game.ChangeForce(PlayerId, NormalizedForce);
 		if ((Accumulation && !Input.GetMouseButton(0)) || (DeltaTime == DeltaTimeMax))
 		{
-			Force = (DeltaTime / DeltaTimeMax) * MaxForce;
 			Vector3 pz = Camera.main.ScreenPointToRay(Input.mousePosition).GetPoint(0);
 			pz.z = 0;
 			Vector2 forceVector = (pz - this.transform.position);

@@ -155,6 +155,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   crap: {fileID: 1891250932946786, guid: d2f3280fa7c4cc54f88caf726c06e26d, type: 2}
   Health: 6
+  PlayerId: 1
 --- !u!114 &114566952678989132
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -169,12 +170,12 @@ MonoBehaviour:
   HeartTexture: {fileID: 2800000, guid: 1b9d7ff235b0b00458b869c23f5377ea, type: 3}
   HalfHeartTexture: {fileID: 2800000, guid: 083265356b38791439dcba28c78597df, type: 3}
   EmptyHeartTexture: {fileID: 2800000, guid: 12b2eb9bca1613148a75bde608cfd21e, type: 3}
-  DistanceBetween: 6
-  TextureWidth: 26
-  TextureHeight: 20
+  DistanceBetween: 16
+  TextureWidth: 52
+  TextureHeight: 40
   MaxHearth: 3
   startX: 20
-  startY: 50
+  startY: 20
 --- !u!212 &212131917284099286
 SpriteRenderer:
   m_ObjectHideFlags: 1
