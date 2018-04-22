@@ -78,4 +78,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Score: 100
-  PlayerId: 1
+  PlayerId: 2
