@@ -5,7 +5,7 @@ using UnityEngine;
 public class MonkeyKeyController : MonoBehaviour {
 	private Animator animator;
 	private float Force;
-	private float MaxForce = 400;
+	private float MaxForce = 200;
 	private float TimeStart;
 	private float TimeStop;
 	private float TimePause = 1;
@@ -68,6 +68,26 @@ public class MonkeyKeyController : MonoBehaviour {
 			TimeStop = Time.time;
 		}
 
+		
+	}
+
+	public void OnTriggerEnter2D(Collider2D other)
+	{
+		if (other.gameObject.name == "Crap(Clone)")
+		{
+			animator.SetTrigger("TouchCrap");
+			this.Health--;
+			if (this.Health < 1)
+			{
+				animator.SetTrigger("Death");
+				Destroy(GetComponent< Rigidbody2D > ());
+			}
+			Debug.Log(this.Health);
+		}
+	}
+
+	void Update()
+	{
 		if (Input.GetKey("a"))
 		{
 			GetComponent< Rigidbody2D > ().velocity = new Vector3(-1, 0, 0);
@@ -77,18 +97,5 @@ public class MonkeyKeyController : MonoBehaviour {
 		{
 			GetComponent< Rigidbody2D > ().velocity = new Vector3(1, 0, 0);
 		}
-	}
-
-	public void OnTriggerEnter2D(Collider2D other)
-	{
-		if (other.gameObject.name == "Crap(Clone)")
-		{
-			this.Health--;
-		}
-	}
-
-	void Update()
-	{
-		
 	}
 }
