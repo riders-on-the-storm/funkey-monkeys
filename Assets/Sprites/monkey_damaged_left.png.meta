@@ -1,13 +1,11 @@
 fileFormatVersion: 2
-guid: 9200d65b48b96c641beb2196620e681e
-timeCreated: 1524386294
+guid: 0e7d571e3c028db4380556b2d22606c1
+timeCreated: 1524397972
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: monkey_idle_0
-    21300002: monkey_idle_1
-    21300004: monkey_idle_2
-    21300006: monkey_idle_3
+    21300000: monkey_damaged_left_0
+    21300002: monkey_damaged_left_1
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -84,7 +82,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: monkey_idle_0
+      name: monkey_damaged_left_0
       rect:
         serializedVersion: 2
         x: 0
@@ -98,38 +96,10 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: monkey_idle_1
+      name: monkey_damaged_left_1
       rect:
         serializedVersion: 2
         x: 32
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: monkey_idle_2
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: monkey_idle_3
-      rect:
-        serializedVersion: 2
-        x: 96
         y: 0
         width: 32
         height: 32
