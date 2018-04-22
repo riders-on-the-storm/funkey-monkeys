@@ -51,7 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76920ff2521428e41a4a712e642ee18c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Camera: {fileID: 20689151096367110, guid: b0955ade1765fab40904add9c1e94efe, type: 2}
+  Camera: {fileID: 20303408367093600, guid: b0955ade1765fab40904add9c1e94efe, type: 2}
   Player1: {fileID: 1328578883247592, guid: de446a5eaeb504a4ab63f45177ba03c5, type: 2}
   Player2: {fileID: 1968187013919218, guid: 0d70c36153505dc44a175faa19813cc9, type: 2}
   MainGrid: {fileID: 2569400267955273526, guid: f7c7a6a4645d16e4c9c45ce35f153640,

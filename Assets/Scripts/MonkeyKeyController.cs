@@ -102,6 +102,7 @@ public class MonkeyKeyController : MonoBehaviour {
 			this.Health--;
 			if (this.Health < 1)
 			{
+				Game.GameOver(false);
 				Destroy(GetComponent< Rigidbody2D > ());
 			}
 		}

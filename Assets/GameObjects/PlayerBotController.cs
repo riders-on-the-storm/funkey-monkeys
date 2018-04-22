@@ -133,7 +133,7 @@ public class PlayerBotController : MonoBehaviour {
 			this.Health--;
 			if (this.Health < 1)
 			{
-				animator.SetTrigger("Death");
+				Game.GameOver(true);
 				Destroy(GetComponent< Rigidbody2D > ());
 			}
 		}
