@@ -155,6 +155,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   crap: {fileID: 1891250932946786, guid: d2f3280fa7c4cc54f88caf726c06e26d, type: 2}
   Health: 6
+  speed: 3
+  jumpPower: 4
+  isJumping: 0
 --- !u!114 &114566952678989132
 MonoBehaviour:
   m_ObjectHideFlags: 1

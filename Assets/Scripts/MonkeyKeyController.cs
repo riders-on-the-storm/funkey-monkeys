@@ -14,16 +14,22 @@ public class MonkeyKeyController : MonoBehaviour {
 	private bool Accumulation = false;
 	public GameObject crap;
 	public int Health = 6;
+
+	private Rigidbody2D mybody;
+	public float speed;
+	public float jumpPower;
+	public bool isJumping = false;
 	
 	// Use this for initialization
 	void Start () {
 		animator = GetComponent<Animator> ();
+		mybody = GetComponent<Rigidbody2D>();
 	}
 
 	// Update is called once per frame
 	void FixedUpdate ()
 	{
-		if (Input.GetMouseButton(0))
+		if (Input.GetButton("Fire1"))
 		{
 			if (!Accumulation && (Time.time - TimeStop > TimePause))
 			{
@@ -41,7 +47,7 @@ public class MonkeyKeyController : MonoBehaviour {
 			}
 		}
 
-		if ((Accumulation && !Input.GetMouseButton(0)) || (DeltaTime == DeltaTimeMax))
+		if ((Accumulation && !Input.GetButton("Fire1")) || (DeltaTime == DeltaTimeMax))
 		{
 			Force = (DeltaTime / DeltaTimeMax) * MaxForce;
 			Vector3 pz = Camera.main.ScreenPointToRay(Input.mousePosition).GetPoint(0);
@@ -67,10 +73,8 @@ public class MonkeyKeyController : MonoBehaviour {
 			DeltaTime = 0;
 			TimeStop = Time.time;
 		}
-
-		
 	}
-
+	
 	public void OnTriggerEnter2D(Collider2D other)
 	{
 		if (other.gameObject.name == "Crap(Clone)")
@@ -82,20 +86,23 @@ public class MonkeyKeyController : MonoBehaviour {
 				animator.SetTrigger("Death");
 				Destroy(GetComponent< Rigidbody2D > ());
 			}
-			Debug.Log(this.Health);
+		}
+
+		if (other.gameObject.tag == "Ground")
+		{
+			isJumping = false;
 		}
 	}
 
 	void Update()
 	{
-		if (Input.GetKey("a"))
-		{
-			GetComponent< Rigidbody2D > ().velocity = new Vector3(-1, 0, 0);
-		}
+		float move = Input.GetAxis("Horizontal");
+		mybody.velocity = new Vector2(move * speed, mybody.velocity.y);
 
-		if (Input.GetKey("d"))
+		if (Input.GetKey("w") && !isJumping)
 		{
-			GetComponent< Rigidbody2D > ().velocity = new Vector3(1, 0, 0);
+			mybody.velocity = new Vector2(mybody.velocity.x, jumpPower);
+			isJumping = true;
 		}
 	}
 }
