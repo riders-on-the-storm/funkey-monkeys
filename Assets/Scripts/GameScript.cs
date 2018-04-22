@@ -29,8 +29,8 @@ public class GameScript : MonoBehaviour
 		{
 			Instantiate(hole);	
 		}
-		 Score1 = GameObject.Find ("Canvas/Score1").GetComponent<UnityEngine.UI.Text>();
-		 Score2 = GameObject.Find ("Canvas/Score2").GetComponent<UnityEngine.UI.Text>();
+		Score1 = GameObject.Find ("Main Camera(Clone)/Canvas/Score1").GetComponent<Text>();
+		Score2 = GameObject.Find ("Main Camera(Clone)/Canvas/Score2").GetComponent<Text>();
 	}
 
 	public void AddScore(int PlayerId, int score)
